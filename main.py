@@ -1,18 +1,17 @@
-
+thread_count = input("number of threds ? (850 is best)")
 import requests
 import json
 from random import randint
 
-for x in range(1000):
+def Check:
 
       headers = {
       'Accept': 'application/json',
       }
       groupId = ""
       for a in range(randint(1,6)):
-        groupId = groupId + str(randint(1,7))
-      groupId = groupId + str(randint(4,7))
-
+        groupId = groupId + str(randint(0,7))
+      groupId = groupId + str(randint(0,7))
       link = "https://groups.roblox.com/v1/groups/" + groupId
       response = requests.get(link , headers=headers)
       response = response.json()
@@ -31,6 +30,9 @@ for x in range(1000):
         print("Owned")
         with open("log.txt", "a") as hit:
                 hit.write(groupId + " Owned")
+
+for x in range(thread_count):
+    threading.Thread(target=Check).start()
 
 
 
